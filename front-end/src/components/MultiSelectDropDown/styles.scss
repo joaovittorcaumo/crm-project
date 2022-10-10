@@ -1,0 +1,65 @@
+@import "../../styles";
+
+.multi-select {
+  .input {
+    margin-bottom: 0.25rem;
+  }
+
+  .multi-select__control {
+    border: 1px solid black;
+    padding: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+
+    .multi-select__indicator-separator {
+      display: none;
+    }
+
+    .multi-select__indicator.multi-select__dropdown-indicator {
+      padding: 0rem 0rem 0rem 0.5rem;
+
+      svg {
+        color: $grey-project;
+        height: 32px;
+        width: 32px;
+      }
+    }
+  }
+
+  .multi-select__control.multi-select__control--is-focused {
+    border: 1px solid black;
+    padding: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+    outline: none !important;
+    box-shadow: none !important;
+
+    .multi-select__indicator-separator {
+      display: none;
+    }
+
+    .multi-select__indicator.multi-select__dropdown-indicator {
+      padding: 0rem 0rem 0rem 0.5rem;
+
+      svg {
+        color: $salmon;
+        height: 32px;
+        width: 32px;
+      }
+    }
+  }
+
+  .multi-select__menu-list.multi-select__menu-list--is-multi {
+    padding-top: 0rem;
+
+    .multi-select__option {
+      background-color: transparent !important;
+      border-top: 1px solid transparent;
+      border-color: lightgrey;
+    }
+  }
+
+  .multi-select__placeholder {
+    color: black;
+  }
+}
