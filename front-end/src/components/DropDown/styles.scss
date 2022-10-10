@@ -1,0 +1,49 @@
+@import "./../../styles";
+
+.dropdownContainer {
+  position: relative;
+  width: 100%;
+  min-width: 100px;
+  background-size: 32px 32px;
+  background: url("../../assets/DropDown/arrow.svg") no-repeat calc(100% - 10px) 50%;
+
+
+  .box {
+    background: transparent;
+    appearance: none;
+    cursor: pointer;
+    width: 100%;
+    
+    input,
+    label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      right: 48px;
+    }
+  }
+
+  >.items {
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid grey;
+    border-radius: 4px;
+    max-height: 300px;
+    overflow: auto;
+    z-index: 10;
+
+    >div {
+      padding: 8px 16px;
+      border-top: 1px solid transparent;
+      border-color: grey;
+      cursor: pointer;
+
+      &:hover {
+        background-color: white;
+      }
+    }
+  }
+}
