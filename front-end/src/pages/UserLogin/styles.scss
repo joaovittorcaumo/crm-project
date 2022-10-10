@@ -1,0 +1,48 @@
+@import "../../styles.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .content  {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+        margin-bottom: 4rem;
+        font-weight: 700;
+    }
+
+    .inputs {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 4rem;
+
+        .input {
+            width: 100%;
+        }
+
+        .text {
+            font-weight: 400;
+            cursor: pointer;
+        }
+    }
+
+    .buttons {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+
+    }
+
+ }
+}

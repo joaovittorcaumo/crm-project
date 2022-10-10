@@ -1,4 +1,6 @@
 export const PAGE = {
   HOME: () => "/",
-  REGISTER: () => "/register"
+  REGISTER: () => "/register",
+  LOGIN: () => "/login",
+  USER_MAIN: () => "/user"
 };
