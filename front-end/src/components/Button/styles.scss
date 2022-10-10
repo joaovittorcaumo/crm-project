@@ -1,0 +1,11 @@
+@import "../../styles";
+
+.button-container {
+  display: block;
+  padding: 16px 24px;
+  border-radius: 32px;
+  cursor: pointer;
+  background-color: $grey-project;
+  color: white;
+  border: none;
+}
