@@ -1,11 +1,11 @@
 import React from "react";
 
-import "./index.scss";
+import "./styles.scss";
 import imgSplashContainer from "../../assets/LandingPage/imgSplashContainer.png";
 
 const App: React.FC = () => {
   return (
-    <div className="container">
+    <div className="containerApp">
       <div className="content">
         <section className="splashContainer">
           <div className="left">

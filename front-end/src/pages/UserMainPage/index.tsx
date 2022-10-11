@@ -2,7 +2,7 @@ import React from "react";
 
 const UserMainPage: React.FC = () => {
     return (
-        <div className="container">
+        <div className="containerUserPage">
             <div className="content">
                 <div className="textContainer"><h1 className="title"></h1>
                 <p className="subtitle"></p></div>

@@ -24,7 +24,7 @@ const UserRegister: React.FC = () => {
   ];
 
   return (
-    <div className="container">
+    <div className="containerLogin">
       <div className="content">
         <h1 className="title">Acesse seu perfil</h1>
         <div className="inputs">
