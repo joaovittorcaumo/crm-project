@@ -9,7 +9,7 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="content">
         <div className="left">
-          <img src={Logo} alt="" className="logo" />
+          {/* <img src={Logo} alt="" className="logo" /> */}
           <div className="text">
             <p className="paragraph">Inicio</p>
             <p className="paragraph">Contato</p>

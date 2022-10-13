@@ -7,14 +7,19 @@
   flex-direction: column;
 
   .content  {
-    max-width: 400px;
+    width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    background-color: white;
 
     .title {
         margin-bottom: 4rem;
-        font-weight: 700;
+        font-size: $titlesize;
+        font-weight: $titleweight;
     }
 
     .inputs {
