@@ -2,8 +2,13 @@ import React from "react";
 
 import "./styles.scss";
 import imgSplashContainer from "../../assets/LandingPage/imgSplashContainer.png";
+import Circles from "../../assets/LandingPage/circles.svg";
+import { useNavigate } from "react-router-dom";
+import { PAGE } from "../../constants";
 
 const App: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="containerApp">
       <div className="content">
@@ -16,10 +21,14 @@ const App: React.FC = () => {
                 funcionarios e clientes!
               </p>
             </div>
-            <button className="createAccountBtn">Cadastre seu perfil!</button>
+            <button onClick={() => navigate(PAGE.REGISTER())} className="createAccountBtn">Cadastre seu perfil!</button>
           </div>
           <div className="Right">
-            <img className="image" src={imgSplashContainer} alt="Uma imagem de conexoes de rede" />
+            <img
+              className="image"
+              src={imgSplashContainer}
+              alt="Uma imagem de conexoes de rede"
+            />
           </div>
         </section>
 
@@ -29,9 +38,8 @@ const App: React.FC = () => {
             <div className="top">
               <div className="textContent">
                 <div className="aboutSectionDiv">
-                  <h4 className="title">
-                    Conectamos a sua empresa a novos clientes
-                  </h4>
+                  <img src={Circles} alt="" />
+                  <h4 className="titleAboutSection">Conectamos a sua empresa</h4>
                 </div>
                 <p className="paragraph">
                   Nossa plataforma tem eficiencia em conectar sa empresa a
@@ -42,7 +50,8 @@ const App: React.FC = () => {
 
               <div className="textContent">
                 <div className="aboutSectionDiv">
-                  <h4 className="title">Inovando o sistema de CRMS's</h4>
+                  <img src={Circles} alt="" />
+                  <h4 className="titleAboutSection">Inovando o sistema de CRMS's</h4>
                 </div>
                 <p className="paragraph">
                   Com a JV CRM's, voce consegue controlar que times irao

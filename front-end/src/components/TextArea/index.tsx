@@ -27,7 +27,6 @@ const TextArea: React.FC<TextAreaProps> = ({
         onChange={onChange}
         value={value}
         placeholder={placeholder}
-        maxLength={250}
       ></textarea>
     </div>
   );

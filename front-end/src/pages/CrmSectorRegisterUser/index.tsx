@@ -18,13 +18,13 @@ const CrmSectorRegisterUser: React.FC = () => {
           <Input
             label=""
             className="nome"
-            placeholder="Nome do documento"
+            placeholder="Nome"
             type="text"
           ></Input>
           <Input
             label=""
             className="input"
-            placeholder="Link do documento"
+            placeholder="Email"
             type="text"
           ></Input>
           <DropDownInput
@@ -33,7 +33,7 @@ const CrmSectorRegisterUser: React.FC = () => {
             autoCompletion={funcoes}
             onChange={(e) => setFuncao(e.target.value)}
             label="Funcao"
-            placeholder="Funcao"
+            placeholder="Cargo"
             required
             readOnly
             onSelectItem={setFuncao}

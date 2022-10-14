@@ -4,8 +4,12 @@ import "./styles.scss";
 import Input from "../../components/Input";
 import DropDownInput from "../../components/DropDown";
 import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
+import { PAGE }from "../../constants";
 
 const UserRegister: React.FC = () => {
+  const navigate = useNavigate();
+
   const [setor, setSetor] = useState<string | undefined>("");
 
   const setores = [
@@ -56,8 +60,8 @@ const UserRegister: React.FC = () => {
           />
         </div>
         <div className="buttons">
-          <Button>Voltar</Button>
-          <Button>Finalizar Cadastro</Button>
+          <Button onClick={() => navigate(PAGE.HOME())}>Voltar</Button>
+          <Button onClick={() => navigate(PAGE.USER_MAIN())}>Finalizar Cadastro</Button>
         </div>
       </div>
     </div>

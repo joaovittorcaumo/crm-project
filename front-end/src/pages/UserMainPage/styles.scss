@@ -1,0 +1,108 @@
+@import "../../styles.scss";
+
+.containerUserPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+    .content {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem;
+
+      .textContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 4rem;
+
+        .title {
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            font-weight: 400;
+        }
+      }
+
+      .workFlowAnalysis {
+        width: 100%;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6rem;
+
+        .analysis {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .progressBarContainer {
+                display: flex;
+                width: 60%;
+                gap: 0px;
+
+                .progressBar {
+                    flex: 1;
+                }
+
+                .para {
+                    font-weight: 700;
+                    font-size: 20px;
+                }
+            }
+        }
+      }
+
+      .projects {
+        width: 100%;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .top{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+
+            .title {
+                flex: 1;
+                font-weight: 700;
+                font-size: 20px;
+            }
+            
+            .buttons{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex: 1;
+            }
+        }
+        .bottom {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+      }
+
+
+    }
+}

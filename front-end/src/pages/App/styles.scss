@@ -119,10 +119,18 @@
 
           .aboutSectionDiv {
             display: flex;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             min-height: 100%;
+            justify-content: flex-start;
+            align-items: center;
+            
+            
+            img {
+              width: 4%;
+              height: auto;
+            }
 
-            .title {
+            .titleAboutSection {
               font-size: 1.5rem;
               margin-left: 0.5rem;
             }
