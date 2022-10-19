@@ -1,0 +1,31 @@
+@import "../../styles.scss";
+
+.table-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+
+  .name {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .action-btn {
+    background: none;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    margin: 0 0.5rem;
+
+    .icon {
+      width: 1.5rem;
+    }
+  }
+}
+
+.table-row:nth-child(odd) {
+  background-color: rgba($grey-project, 0.25);
+}
