@@ -5,32 +5,41 @@ import {
     OneToOne,
     PrimaryGeneratedColumn,
   } from 'typeorm';
-  import {UserRole} from './enums/userRole';
+  import {status} from './enums/status';
 
   
-  @Entity('users')
+  @Entity('crm')
   export class User {
     @PrimaryGeneratedColumn()
     id: number;
   
     @Column({type: 'varchar', length: 256})
     name: string;
+
+    @Column({type: 'varchar'})
+    complexity: string;
   
-    @Column({type: 'varchar', length: 256, unique: true})
-    email: string;
+    @Column({type: 'varchar'})
+    goal: string;
   
-    @Column({select: false})
-    password: string;
+    @Column({type: 'varchar'})
+    justification: string;
   
-    @Column({type: 'varchar', length: 256, unique: true})
-    role: string;
+    @Column({type: 'varchar'})
+    description: string;
+
+    @Column({type: 'varchar'})
+    documents: Document[];
+
+    @CreateDateColumn({type: 'date'})
+    createdAt: Date;  
 
     @Column({
       type: 'enum',
-      enum: UserRole,
-      default: UserRole.USER,
+      enum: status,
+      default: status.ANALISE,
     })
-    permissions: UserRole;
+    type: status;
   
   }
   
