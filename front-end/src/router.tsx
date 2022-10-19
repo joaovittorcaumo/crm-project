@@ -11,6 +11,8 @@ import CrmRegister from "./pages/CrmRegister";
 import SectorRegister from "./pages/SectorRegister";
 import CrmDocumentRegister from "./pages/CrmDocumentRegister";
 import CrmSectorRegisterUser from "./pages/CrmSectorRegisterUser";
+import CrmMain from "./pages/CrmMainPage";
+import CrmMainPage from "./pages/CrmMainPage";
 
 const Router: React.FC = () => {
   return (
@@ -23,6 +25,7 @@ const Router: React.FC = () => {
         <Route path={PAGE.USER_MAIN()} element={<UserMainPage />}></Route>
         <Route path={PAGE.CRM_REGISTER()} element={<CrmRegister />}></Route>
         <Route path={PAGE.CRM_SECTOR_REGISTER()} element={<SectorRegister />}></Route>
+        <Route path={PAGE.CRM_MAIN()} element={<CrmMainPage />}></Route>
         <Route path={PAGE.CRM_DOCUMENT_REGISTER()} element={<CrmDocumentRegister />}></Route>
         <Route path={PAGE.CRM_SECTOR_USER_REGISTER()} element={<CrmSectorRegisterUser />}></Route>
       </Routes>
