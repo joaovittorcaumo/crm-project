@@ -5,14 +5,13 @@ import {
     OneToOne,
     PrimaryGeneratedColumn,
   } from 'typeorm';
-import { CrmVersions } from './CrmVersions';
 import { Documents } from './Documents';
   import {status} from './enums/status';
-import { Sector } from './Sectors';
+import { Sectors } from './Sectors';
 
   
-  @Entity('crm')
-  export class Crm {
+  @Entity('crmVersion')
+  export class CrmVersions {
     @PrimaryGeneratedColumn()
     id: number;
   
@@ -45,10 +44,7 @@ import { Sector } from './Sectors';
     type: status;
 
     @Column({type: 'varchar'})
-    crmVersion: CrmVersions[];
-  
+    sectors: Sectors[];
     
-    @Column({type: 'varchar'})
-    sectors: Sector[];
   }
   

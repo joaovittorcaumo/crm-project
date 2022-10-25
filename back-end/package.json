@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/app.js",
+    "start": "nodemon src/app.ts",
     "dev": "nodemon src/app.ts | pino-pretty",
     "test": "jest"
   },
@@ -13,14 +13,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "brcypt": "^1.0.1",
+    "cli": "^1.0.1",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "node-cli": "^0.2.5",
     "nodeman": "^1.1.2",
     "nodemon": "^2.0.20",
-    "typeorm": "^0.3.10"
+    "pg": "^8.8.0",
+    "typeorm": "^0.3.10",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.14",
     "@types/node": "^18.11.2",
+    "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
   }
 }
