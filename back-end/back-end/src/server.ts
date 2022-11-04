@@ -1,22 +1,24 @@
 import * as express from "express";
-import { Request, Response } from "express";
 
-import { AppDataSource } from "./data-source"
-import { User } from "./entity/User"
-import { Sectors } from "./entity/Sectors";
-import { Documents } from "./entity/Documents";
-import { Crm } from "./entity/Crm";
+import { router } from "./router";
+import { UserController } from "./controllers/UserController";
+import { SectorService } from "./services/SectorService";
+import { SectorsController } from "./controllers/SectorsController";
 
-AppDataSource
-    .initialize()
-    .then(() => {
-        console.log("Data Source initialized");
-    })
-    .catch((err) => {
-        console.error("Error initializing Data Source")
-    });
     
 //REGRAS DE NEGOCIO, COMO: UMA CRM TEM QUE TER UM SETOR OBRIGATORIAMENTE TEM QUE SER FEITAS NO BACK
+
+// Creating and setting the express app
+const app = express();
+app.use(express.json());
+
+// Router registering
+router;
+app.get('/register',  new UserController().register);
+app.get('/sectorRegister',  new SectorsController().register);
+
+
+app.listen(3000, () => console.log("Server Running"));
 
 
 
@@ -51,6 +53,7 @@ AppDataSource
 //     user.email = "timber.test@gmail.com";
 //     user.role = "Project Manager";
 //     user.sector = sector;
+//     user.password = "123456";
 //     sector.users = [user];
 //     await AppDataSource.manager.save(sector);
 //     await AppDataSource.manager.save(user);
