@@ -56,11 +56,11 @@ import { User } from './User';
 
   
     @ManyToMany(() => User)
-    @JoinTable()
+    @JoinTable({name: "CrmUserConnection"})
     users: User[];
 
     @ManyToMany(() => Sectors)
-    @JoinTable() // adicionar nomes
+    @JoinTable({name: "CrmSectorsConnection"}) // adicionar nomes
     sectors: Sectors[];
       crm: Promise<User[]>;
   }
