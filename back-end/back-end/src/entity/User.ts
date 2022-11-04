@@ -16,9 +16,6 @@ export class User {
     @Column()
     role: string
 
-    @Column()
-    password: string
-
     @ManyToOne(() => Sectors, (sector) => sector.users, {nullable: true})
     sector: Sectors;
 }
