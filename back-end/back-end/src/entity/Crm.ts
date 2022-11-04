@@ -42,6 +42,9 @@ import { User } from './User';
     @Column({type: 'varchar'})
     description: string;
 
+    @Column()
+    creator: User;
+
     @OneToMany(() => Documents, (documents) => documents.mainCrm, {nullable: true})
     documents: Documents[];
 
@@ -59,5 +62,6 @@ import { User } from './User';
     @ManyToMany(() => Sectors)
     @JoinTable({name: "CrmSectorsConnection"}) // adicionar nomes
     sectors: Sectors[];
+      crm: Promise<User[]>;
   }
   
