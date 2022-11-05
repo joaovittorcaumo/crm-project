@@ -27,6 +27,9 @@ import { User } from './User';
   
     @Column({type: 'varchar'})
     goal: string;
+      
+    @Column(() => User)
+    creator: User;
 
     
     @Column({

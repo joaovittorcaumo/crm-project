@@ -2,14 +2,20 @@ import { Sectors } from "../entity/Sectors";
 import { User } from "../entity/User";
 
 import { AppDataSource } from "../data-source";
+import { Crm } from "../entity/Crm";
+import { In } from "typeorm";
 
 type UserServiceProps = {
   name: string;
   email: string;
   role: string;
   password: string;
-  sector: Sectors;
+  sector: string;
 }
+
+type FindCrMProps = {
+  email: string;
+};
 
 AppDataSource
     .initialize()
@@ -32,7 +38,11 @@ export class AddUserService {
 
     user.name = name;
     user.email = email;
-    user.sector = sector;
+    const sectorsRepo = AppDataSource.getRepository(Sectors);
+    const finalSector = await sectorsRepo.findOne({ where:
+      { name: sector}
+    })
+    user.sector = finalSector;
     user.password = password;
     user.role = role;
     
@@ -46,5 +56,21 @@ export class AddUserService {
   }
     await AppDataSource.manager.save(user);
     return user;
+  }
+
+    async findAllLinkedCrms({ email }: FindCrMProps): Promise<Crm[] | Error> {
+    const userRepo = AppDataSource.getRepository(User);
+    const user = userRepo.findOne({
+      where: {
+        email: email,
+      },
+    });
+    const id = (await user).id;
+    const crmsRepo = AppDataSource.getRepository(Crm);
+    const crms = crmsRepo.findBy({
+      users: In([id])
+    });
+
+    return crms;
   }
 }

@@ -4,6 +4,7 @@ import { router } from "./router";
 import { UserController } from "./controllers/UserController";
 import { SectorService } from "./services/SectorService";
 import { SectorsController } from "./controllers/SectorsController";
+import { CrmController } from "./controllers/CrmController";
 
     
 //REGRAS DE NEGOCIO, COMO: UMA CRM TEM QUE TER UM SETOR OBRIGATORIAMENTE TEM QUE SER FEITAS NO BACK
@@ -16,6 +17,9 @@ app.use(express.json());
 router;
 app.get('/register',  new UserController().register);
 app.get('/sectorRegister',  new SectorsController().register);
+app.get('/findCrms',  new UserController().findAllLinkedCrms);
+app.get('/registerCrm',  new CrmController().register);
+
 
 
 app.listen(3000, () => console.log("Server Running"));
