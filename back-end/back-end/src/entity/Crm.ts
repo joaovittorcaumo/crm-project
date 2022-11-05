@@ -4,6 +4,7 @@ import {
     Entity,
     JoinTable,
     ManyToMany,
+    ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
   } from 'typeorm';
@@ -28,7 +29,7 @@ import { User } from './User';
     @Column({type: 'varchar'})
     goal: string;
       
-    @Column(() => User)
+    @ManyToOne(() => User, (user) => user.crmsCreator, {nullable: true})
     creator: User;
 
     
@@ -48,12 +49,11 @@ import { User } from './User';
     @OneToMany(() => Documents, (documents) => documents.mainCrm, {nullable: true})
     documents: Documents[];
 
-    @CreateDateColumn({type: 'varchar'})
-    createdAt: string;  
+    @CreateDateColumn()
+    createdAt: Date;  
 
     @OneToMany(() => CrmVersions, (version) => version.mainCrm, {nullable: true})
     versions: CrmVersions[];
-
   
     @ManyToMany(() => User)
     @JoinTable({name: "CrmUserConnection"})

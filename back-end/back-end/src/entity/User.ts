@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
+import { Crm } from "./Crm"
 import { Sectors } from "./Sectors"
 
 @Entity()
@@ -21,4 +22,8 @@ export class User {
 
     @ManyToOne(() => Sectors, (sector) => sector.users, {nullable: true})
     sector: Sectors;
+        
+    @OneToMany(() => Crm, (crms) => crms.creator, {nullable: true})
+    crmsCreator: Crm[];
+
 }

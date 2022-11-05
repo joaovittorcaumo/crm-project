@@ -39,6 +39,8 @@ export class CrmService {
     createdAt,
     versions,
   }: CrmServiceProps): Promise<Crm | Error> {
+    console.log("AAAAAAAAAAAAAA")
+    
     const crm = new Crm();
 
     crm.name = name;
@@ -47,19 +49,35 @@ export class CrmService {
     crm.type = type;
     crm.justification = justification;
     crm.description = description;
+
     const usersRepo = AppDataSource.getRepository(User);
-    const userFinal = await usersRepo.findOne({ where:
-      { id: creator}
+    const userCreator = await usersRepo.findOne({ 
+      where: { 
+        id: creator
+      },
+      relations: {
+        sector: true
+      }
+      
     })
-    crm.creator = userFinal;
-    crm.documents = documents;
-    crm.createdAt = createdAt;
+    console.log("creatorASD", userCreator)
+
+    crm.creator = userCreator;
     crm.versions = versions;
-    crm.users = [userFinal];
-    // crm.sectors = [userFinal.sector];
-    const repo = AppDataSource.getRepository(Crm);
+    crm.documents = documents;
+    crm.users = [userCreator];
+    crm.sectors = [userCreator.sector]
 
     await AppDataSource.manager.save(crm);
+
+    /*
+  
+    
+    // ;
+    const repo = AppDataSource.getRepository(Crm);
+
+    
+    */
     return crm;
   }
 }

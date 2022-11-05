@@ -59,12 +59,34 @@ export class AddUserService {
   }
 
     async findAllLinkedCrms({ email }: FindCrMProps): Promise<Crm[] | Error> {
+    
+      const crmRepo = AppDataSource.getRepository(Crm)
+      const crms = await crmRepo.find({
+        where: {
+          users: {
+            email: email
+          }
+        }
+      })
+
+      console.log("LLLLLLLLLLLLLLLLL", crms)
+
+      return crms
+    
+    /*  
+    
     const userRepo = AppDataSource.getRepository(User);
     const user = userRepo.findOne({
       where: {
-        email: email,
+        email: email,        
+      },
+      relations: {
+        crmsCreator: true
       },
     });
+
+
+
     const id = (await user).id;
     const crmsRepo = AppDataSource.getRepository(Crm);
     const crms = crmsRepo.findBy({
@@ -72,5 +94,6 @@ export class AddUserService {
     });
 
     return crms;
+    */
   }
 }
