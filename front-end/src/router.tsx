@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PAGE } from "./constants";
 import App from "./pages/App";
@@ -13,10 +13,13 @@ import CrmDocumentRegister from "./pages/CrmDocumentRegister";
 import CrmSectorRegisterUser from "./pages/CrmSectorRegisterUser";
 import CrmMain from "./pages/CrmMainPage";
 import CrmMainPage from "./pages/CrmMainPage";
+import { User, UserContext } from "./api/user/UserContext";
 
 const Router: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null);
   return (
     <BrowserRouter>
+    <UserContext.Provider value={{user, setUser}}>
     <Header />
       <Routes>
         <Route path={PAGE.HOME()} element={<App />}></Route>
@@ -30,6 +33,7 @@ const Router: React.FC = () => {
         <Route path={PAGE.CRM_SECTOR_USER_REGISTER()} element={<CrmSectorRegisterUser />}></Route>
       </Routes>
       <Footer />
+      </UserContext.Provider>
     </BrowserRouter>
   );
 };

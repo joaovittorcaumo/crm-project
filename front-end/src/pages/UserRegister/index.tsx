@@ -1,67 +1,95 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./styles.scss";
 import Input from "../../components/Input";
 import DropDownInput from "../../components/DropDown";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
-import { PAGE }from "../../constants";
+import { PAGE } from "../../constants";
 
 const UserRegister: React.FC = () => {
   const navigate = useNavigate();
+  const [setores, setSetores] = useState<string[] | undefined>([]);
 
-  const [setor, setSetor] = useState<string | undefined>("");
+  const [sector, setSector] = useState<string | undefined>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [role, setRole] = useState<string>("");
 
-  const setores = [
-    "Recursos Humanos",
-    "Tecnologia da informacao",
-    "Mercantil",
-    "Vendas",
-  ];
+  function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setName(e.target.value);
+  }
 
-  const [funcao, setFuncao] = useState<string | undefined>("");
+  function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setEmail(e.target.value);
+  }
 
-  const funcoes = [
-    "Project Manager",
-    "Vendedor",
-    "Desenvolvedor",
-    "Tester",
-  ];
+  function handlePasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(e.target.value);
+  }
 
+  function handleRoleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setRole(e.target.value);
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch("http://localhost:3000/sectorNames");
+      const jsonResult = await result.json();
+
+      console.log(jsonResult);
+
+      setSetores(jsonResult);
+    };
+
+    fetchData();
+  }, []);
+
+  const submitUser = async () => {
+    const data = {
+      name: name,
+      email: email,
+      role: role,
+      password: password,
+      sector: sector,
+    }
+    const result = await fetch('http://localhost:3000/register',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    navigate(PAGE.LOGIN());
+  }
   return (
     <div className="containerUserRegister">
       <div className="content">
         <h1 className="title">Cadastre seu perfil</h1>
         <div className="inputs">
-          <Input label="" className="nome" placeholder="Nome"></Input>
-          <Input label="" className="input" placeholder="Matricula"></Input>
-          <Input label="" className="input" placeholder="Email"></Input>
+          <Input label="" onChange={handleNameChange} className="nome" placeholder="Nome"></Input>
+          <Input label="" onChange={handlePasswordChange} className="input" placeholder="Senha"></Input>
+          <Input label="" onChange={handleEmailChange} className="input" placeholder="Email"></Input>
           <DropDownInput
             className="input"
-            value={setor}
+            value={sector}
             autoCompletion={setores}
-            onChange={(e) => setSetor(e.target.value)}
+            onChange={(e) => setSector(e.target.value)}
             label="Setor"
             placeholder="Setores"
             required
             readOnly
-            onSelectItem={setSetor}
+            onSelectItem={setSector}
           />
-          <DropDownInput
-            className="input"
-            value={funcao}
-            autoCompletion={funcoes}
-            onChange={(e) => setFuncao(e.target.value)}
-            label="Funcao"
-            placeholder="Funcao"
-            required
-            readOnly
-            onSelectItem={setFuncao}
-          />
+          <Input label="" onChange={handleRoleChange} className="input" placeholder="Função"></Input>
         </div>
         <div className="buttons">
           <Button onClick={() => navigate(PAGE.HOME())}>Voltar</Button>
-          <Button onClick={() => navigate(PAGE.USER_MAIN())}>Finalizar Cadastro</Button>
+          <Button onClick={() => submitUser()}>
+            Finalizar Cadastro
+          </Button>
         </div>
       </div>
     </div>
