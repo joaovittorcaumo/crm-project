@@ -39,17 +39,10 @@ import { Sectors } from './Sectors';
     documents: Documents[];
 
     @CreateDateColumn({type: 'varchar'})
-    createdAt: string;  
+    createdAt: Date;  
 
     @ManyToOne(() => Crm, (crm) => crm.versions)
     mainCrm: Crm;
-
-    @Column({
-      type: 'enum',
-      enum: status,
-      default: status.ANALISE,
-    })
-    type: status;
 
     @ManyToMany(() => Sectors)
     @JoinTable()

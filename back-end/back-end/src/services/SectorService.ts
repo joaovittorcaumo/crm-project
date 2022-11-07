@@ -36,4 +36,16 @@ export class SectorService {
     await AppDataSource.manager.save(sector);
     return sector;
   }
+
+  async FindSectorsNames(): Promise<String[] | Error> {
+    const setorsRepo = await AppDataSource.getRepository(Sectors);
+    const setores = await setorsRepo.find();
+
+    let nomes = [];
+
+    await setores.map(function (value) {
+      nomes.push(value.name);
+    });
+    return nomes;
+  }
 }

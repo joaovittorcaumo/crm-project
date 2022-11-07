@@ -12,4 +12,13 @@ export class SectorsController{
 
         return response.json(result);
     }
+
+    async FindSectorsNames(request: Request, response: Response) {
+
+        const service = new SectorService();
+
+        const result = await service.FindSectorsNames();
+
+        return response.json(result);
+    }
 }

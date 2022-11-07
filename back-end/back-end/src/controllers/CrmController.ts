@@ -13,10 +13,7 @@ export class CrmController {
       description,
       creator,
       documents,
-      createdAt,
       versions,
-      users,
-      sectors,
     } = request.body;
 
     const service = new CrmService();
@@ -30,8 +27,21 @@ export class CrmController {
       description,
       creator,
       documents,
-      createdAt,
       versions,
+    });
+
+    return response.json(result);
+  }
+
+  async FindCrm(request: Request, response: Response) {
+    const {
+      id
+    } = request.body;
+
+    const service = new CrmService();
+
+    const result = await service.FindCrm({
+      id
     });
 
     return response.json(result);

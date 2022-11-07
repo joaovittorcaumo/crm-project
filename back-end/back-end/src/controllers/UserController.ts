@@ -34,4 +34,17 @@ export class UserController {
     }
     return response.json(result);
   }
+
+  async UserAuth(request: Request, response: Response) {
+    const { email, password } = request.body;
+
+    const service = new AddUserService();
+
+    const result = await service.authUserLogin({
+      email,
+      password,
+    });
+    
+    return response.json(result);
+  }
 }

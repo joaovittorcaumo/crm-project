@@ -17,6 +17,11 @@ type FindCrMProps = {
   email: string;
 };
 
+type authUserProps = {
+  email: string;
+  password: string;
+};
+
 AppDataSource
     .initialize()
     .then(() => {
@@ -69,31 +74,34 @@ export class AddUserService {
         }
       })
 
-      console.log("LLLLLLLLLLLLLLLLL", crms)
-
       return crms
+  }
+
+  async authUserLogin ({ email, password }: authUserProps): Promise<UserServiceProps | null> {
     
-    /*  
-    
-    const userRepo = AppDataSource.getRepository(User);
-    const user = userRepo.findOne({
+    const userRepo = AppDataSource.getRepository(User)
+    const user = await userRepo.findOne({
       where: {
-        email: email,        
+        email: email,
+        password: password
       },
       relations: {
-        crmsCreator: true
+        sector: true,
       },
-    });
+    })
 
 
+    if(user){
+      const teste: UserServiceProps = {
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        password: user.password,
+        sector: user.sector.name
+      }
+      return teste;
+    }
+    return null;
+    }
 
-    const id = (await user).id;
-    const crmsRepo = AppDataSource.getRepository(Crm);
-    const crms = crmsRepo.findBy({
-      users: In([id])
-    });
-
-    return crms;
-    */
-  }
 }

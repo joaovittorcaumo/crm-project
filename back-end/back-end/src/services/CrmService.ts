@@ -14,9 +14,13 @@ type CrmServiceProps = {
   description: string;
   creator: number;
   documents: Documents[];
-  createdAt: string;
   versions: CrmVersions[];
 };
+
+type FindCrmProps = {
+  id: number;
+}
+
 
 AppDataSource.initialize()
   .then(() => {
@@ -36,11 +40,10 @@ export class CrmService {
     description,
     creator,
     documents,
-    createdAt,
     versions,
   }: CrmServiceProps): Promise<Crm | Error> {
-    console.log("AAAAAAAAAAAAAA")
-    
+    console.log("AAAAAAAAAAAAAA");
+
     const crm = new Crm();
 
     crm.name = name;
@@ -51,33 +54,37 @@ export class CrmService {
     crm.description = description;
 
     const usersRepo = AppDataSource.getRepository(User);
-    const userCreator = await usersRepo.findOne({ 
-      where: { 
-        id: creator
+    const userCreator = await usersRepo.findOne({
+      where: {
+        id: creator,
       },
       relations: {
-        sector: true
-      }
-      
-    })
-    console.log("creatorASD", userCreator)
+        sector: true,
+      },
+    });
+    console.log("creatorASD", userCreator);
 
+    crm.createdAt = new Date;
     crm.creator = userCreator;
     crm.versions = versions;
     crm.documents = documents;
     crm.users = [userCreator];
-    crm.sectors = [userCreator.sector]
+    crm.sectors = [userCreator.sector];
 
     await AppDataSource.manager.save(crm);
-
-    /*
-  
-    
-    // ;
-    const repo = AppDataSource.getRepository(Crm);
-
-    
-    */
     return crm;
+  }
+
+  async FindCrm({
+    id
+  }: FindCrmProps): Promise<Crm | Error> {
+    const crmRepo = AppDataSource.getRepository(Crm)
+    const crm = await crmRepo.findOne({
+      where: {
+        id: id
+      }
+    })
+
+    return crm
   }
 }

@@ -1,6 +1,8 @@
 import {
     Column,
     Entity,
+    JoinTable,
+    ManyToMany,
     ManyToOne,
     PrimaryGeneratedColumn,
   } from 'typeorm';
@@ -25,7 +27,8 @@ import { CrmVersions } from './CrmVersions';
     @ManyToOne(() => Crm, (crm) => crm.documents, {nullable: true})
     mainCrm: Crm;
 
-    @ManyToOne(() => CrmVersions, (crm) => crm.documents, {nullable: true})
+    @ManyToMany(() => CrmVersions, (crm) => crm.documents, {nullable: true})
+    @JoinTable({name: "DocumentVersionsConnection"})
     crmVersion: Crm;
   }
   
